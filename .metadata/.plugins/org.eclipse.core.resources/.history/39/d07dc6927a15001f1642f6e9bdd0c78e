@@ -1,0 +1,19 @@
+package Model;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+public class ProductDAO {
+	public void getAll() {
+		try {
+			private Connection  connection = DBHelper.getConnection();
+			String query = "select * from Product ";
+			PreparedStatement pstm = connection.prepareStatement(sql)
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+}

@@ -1,0 +1,59 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page import="java.util.List"%>
+<%@ page import="Model.User"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>User List</title>
+</head>
+<body>
+<div>
+<%
+    // Retrieve the user object from the request
+    List<User> listUser = (List<User>) request.getAttribute("listUser");
+%>
+<form action="UserServlet" method="POST">
+    Username: <input name="username"><br>
+    Password: <input name="password" type="password"><br>
+    Email: <input name="email"><br>
+    Gender:
+    <label for="male">
+        <input type="radio" name="gender" id="male" value="0"> Male
+    </label>
+    <label for="female">
+        <input type="radio" name="gender" id="female" value="1"> Female
+    </label>
+    <br>
+    <input type="submit" value="Create"><br>
+</form>
+</div>
+<hr>
+<table border="1">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Username</th>
+            <th>Gender</th>
+            <th>Email</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <c:forEach var="user" items="${listUser}">
+            <tr>
+                <td>${user.id}</td>
+                <td>${user.username}</td>
+                <td>${user.gender ? 'Male' : 'Female'}</td>
+                <td>${user.email}</td>
+                <td>
+                    <a href="delete?id=${user.id}">Delete</a>
+                    <a href="edit?id=${user.id}">Edit</a>
+                </td>
+            </tr>
+        </c:forEach>
+    </tbody>
+</table>
+</body>
+</html>

@@ -1,0 +1,12 @@
+package Model;
+
+import java.sql.Connection;
+
+public class DBHelper {
+	private static String url ="jdbc:mysql://localhost:3306/demoJava";
+	private static String user = "root";
+	private static String password= "";
+	public Connection getConnection () {
+		
+	}
+}

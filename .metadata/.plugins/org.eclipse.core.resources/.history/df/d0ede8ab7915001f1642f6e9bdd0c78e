@@ -1,0 +1,9 @@
+package Model;
+
+public class Product {
+	private int id;
+	private String name;
+	private String Description;
+	private double price;
+	
+}

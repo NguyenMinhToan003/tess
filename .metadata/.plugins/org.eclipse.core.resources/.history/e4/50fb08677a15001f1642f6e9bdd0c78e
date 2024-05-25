@@ -1,0 +1,10 @@
+package Model;
+
+import java.sql.Connection;
+
+public class ProductDAO {
+	private Connection connection = null;
+	public void getAll() {
+		connection = DBHelper.getConnection();
+	}
+}

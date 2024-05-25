@@ -1,0 +1,27 @@
+package Model;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+public class ProductDAO {
+	public List<Product> getAll() {
+		List<Product> list = new ArrayList<Product>();
+		try {
+			Connection  connection = DBHelper.getConnection();
+			String query = "select * from Product ";
+			PreparedStatement pstm = connection.prepareStatement(query);
+			ResultSet rs = pstm.executeQuery();
+			while(rs.next()) {
+				list.add(new Product(rs.getInt("id"),rs.getString("name"),rs.getString("description)));
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+}

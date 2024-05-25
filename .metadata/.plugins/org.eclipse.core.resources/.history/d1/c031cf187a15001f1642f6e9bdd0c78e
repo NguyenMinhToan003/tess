@@ -1,0 +1,13 @@
+package Model;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+
+public class DBHelper {
+	private static String url ="jdbc:mysql://localhost:3306/demoJava";
+	private static String user = "root";
+	private static String password = "";
+	public Connection getConnection () {
+		return DriverManager.getConnection(url,user,password);
+	}
+}
